@@ -109,8 +109,25 @@ write.csv(gapminder, "gapminder.csv", row.names = FALSE)
 
 # 7. Leer el archivo CSV de nuevo
 gapminder_leido <- read.csv("gapminder.csv")
-
+gapminder_leido
 # 8. Verificar el tipo de datos en de gapminder_leido. Convertir a tibble
-# ...
+
 # Ingresa tu código aquí
 # ...
+class(gapminder_leido)
+gapminder_leido_tb<- as_tibble(gapminder_leido)
+gapminder_leido_tb
+
+#Cuantos continentes tiene gapminder
+num_conti<- length(unique(gapminder_leido$continent))
+num_conti
+#Cuantos paises tiene gapminder
+num_pais<-length(unique(gapminder_leido$country))
+num_pais
+num_pais_conti<-length(unique(gapminder_leido$continent (unique(gapminder_leido$country))))
+num_pais_conti
+#numero de paises por continente
+num_pais_conti<-gapminder_leido_tb %>%
+  group_by(continent) %>%
+  summarise(num_paises = n_distinct(country))
+num_pais_conti
